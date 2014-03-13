@@ -31,10 +31,13 @@
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li>
-                            <a href="/"><i class="icon-chevron-right"></i> Dashboard</a>
+                            <a href="/yak"><i class="icon-chevron-right"></i> Dashboard</a>
                         </li>
                         <li class="active">
-                            <a href="calendar.jsp"><i class="icon-chevron-right"></i> Calendar</a>
+                            <a href="/yak/calendar.jsp"><i class="icon-chevron-right"></i> Calendar</a>
+                         </li>
+                        <li>    
+                        	<a href="/yak/form.jsp"><i class="icon-chevron-right"></i> Order</a>
                         </li>
                     </ul>
                 </div>
