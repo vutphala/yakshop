@@ -109,6 +109,7 @@
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.min.js"></script>
+        <script src="vendors/bootbox.min.js"></script>
     
         <script src="assets/scripts.js"></script>
         <script>
@@ -139,8 +140,34 @@
     					  data:'{"customer":"'+$('#customerName').val()+'", "order":{ "milk":"'+$('#milkReq').val()+'","skins":"'+$('#skinReq').val()+'"}}',
     					  contentType:"application/json; charset=utf-8",
     					  dataType:"json",
-    					  success: function(){
-    					    
+    					  complete: function(e, xhr, settings){
+    					       if(e.status === 201){
+    					    	   bootbox.alert("Your Order placed Sucessfull for <br/> Milk : "+e.responseJSON.milk+" <br/> Skin : "+e.responseJSON.skins, function() {
+    					                
+    					            });
+    					       }else if(e.status === 206){
+								   var message="";
+								   
+								   if(e.responseJSON && e.responseJSON.milk){
+									   message= "Partial Order confirmation : <br/> Order processed for Milk :"+e.responseJSON.milk+" only";
+								   }else if(typeof e.responseJSON.skins != 'undefined'){
+									   message= "Partial Order confirmation : <br/> Order processed for Skins :"+e.responseJSON.skins+" only";
+								   }
+								   
+								   if(message!=""){
+										bootbox.alert(message , function() {
+    					                
+										});
+									}else{
+										bootbox.alert("Unable to process the order due to some technical issues ", function() {
+    					                
+										});
+									}
+    					       }else if(e.status === 404){
+    					    	   bootbox.alert("Stock Not available", function() {
+    					                
+    					            });
+    					       }
     					  }
     					});
     				return false; // required to block normal submit since you used ajax

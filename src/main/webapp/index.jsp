@@ -39,7 +39,7 @@
                             <a href="calendar.jsp"><i class="icon-chevron-right"></i> Calendar</a>
                         </li>
                         <li>
-                            <a href="#"><span class="badge badge-info pull-right">11</span> Reports</a>
+                            <a href="order.jsp"><span class="badge badge-info pull-right">11</span> Order</a>
                         </li>
                         
                     </ul>
